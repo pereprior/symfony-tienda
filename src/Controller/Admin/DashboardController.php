@@ -25,6 +25,18 @@ class DashboardController extends AbstractDashboardController
         return $this->redirect($adminUrlGenerator->setController(TeamCrudController::class)->generateUrl());
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    #[Route('/admin/productos', name: 'admin_productos')]
+    public function adminProductos(): Response
+    {
+        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
+
+        return $this->redirect($adminUrlGenerator->setController(ProductCrudController::class)->generateUrl());
+    }
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
