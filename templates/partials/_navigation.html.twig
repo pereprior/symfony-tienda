@@ -13,7 +13,14 @@
                 <a href="{{ path('service') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'service')  ? 'active': ''}}">Service</a>
                 <a href="{{ path('product') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'product')  ? 'active': ''}}">Product</a>
                 <a href="{{ path('app_cart') }}" class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'app_cart')  ? 'active': ''}}"><i class="bi bi-cart"></i> Cart <span id='totalItems'>({{cart.totalItems}})</span></a>
-                
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" class="nav-item nav-link "> {{ app.user.email }} - Logout</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"  class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'app_login')  ? 'active': ''}}">Login</a>
+                    <a href="{{ path('app_register') }}"  class="nav-item nav-link {{ (app.request.attributes.get('_route') == 'app_register')  ? 'active': ''}}">Register</a>
+                {% endif %}
+
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
